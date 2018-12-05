@@ -63,7 +63,7 @@ int tof_gestures_detectDIRSWIPE_1(int32_t left_range_mm, int32_t right_range_mm,
     
     switch(data->state){
         case GESTURES_DIRSWIPE_START:
-            if(l_motion_code == GESTURES_MOTION_DOWN_STATE && r_motion_code == GESTURES_MOTION_RAISE_UP){
+            if(((l_motion_code == GESTURES_MOTION_DOWN_STATE) || (l_motion_code == GESTURES_MOTION_DROP_DOWN)) && r_motion_code == GESTURES_MOTION_RAISE_UP){
                 if(data->motionDetectorRight.duration > data->minSwipeDuration){
                     data->gesture_start_from_right = 1;
                     data->state = GESTURES_DIRSWIPE_END;
@@ -72,7 +72,7 @@ int tof_gestures_detectDIRSWIPE_1(int32_t left_range_mm, int32_t right_range_mm,
                 }else{
                     return_code = GESTURES_DISCARDED_TOO_FAST;
                 }
-            }else if(r_motion_code == GESTURES_MOTION_DOWN_STATE && l_motion_code == GESTURES_MOTION_RAISE_UP){
+            }else if(((r_motion_code == GESTURES_MOTION_DOWN_STATE) || (r_motion_code == GESTURES_MOTION_DROP_DOWN)) && l_motion_code == GESTURES_MOTION_RAISE_UP){
                 if(data->motionDetectorRight.duration > data->minSwipeDuration){
                     data->gesture_start_from_right = 0;
                     data->state = GESTURES_DIRSWIPE_END;
