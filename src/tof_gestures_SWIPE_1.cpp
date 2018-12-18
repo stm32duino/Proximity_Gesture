@@ -99,7 +99,7 @@ int tof_gestures_detectSWIPE_1(int32_t range_mm, Gesture_SWIPE_1_Data_t *data){
     /* Hand leaving */
     } else if (data->gestureCode == GESTURES_HAND_LEAVING){
     	// Check current distance vs background distance (previously calculated)
-    	if ((((data->meanBackground * (100-SWIPE_1_BACKGROUND_VARIATION)) / 100) < range_mm) && (range_mm < (((data->meanBackground * (100+SWIPE_1_BACKGROUND_VARIATION)) / 100)))){
+    	if ((((data->meanBackground * (100-SWIPE_1_BACKGROUND_VARIATION)) / 100) < range_mm)){
     		// Almost same => Swipe detected/finished
     		data->gestureCode = GESTURES_SINGLE_SWIPE;
     		//data->cpt = 0;
