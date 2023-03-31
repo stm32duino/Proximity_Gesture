@@ -50,7 +50,7 @@ int RB_init(ring_buffer_t* rb, int size)
 
 int RB_push(ring_buffer_t* rb, int data)
 {
-    if (rb == NULL || rb->buffer == NULL)
+    if (rb == NULL)
         return -1;
 
     *rb->data_end = data;
@@ -72,7 +72,7 @@ int RB_push(ring_buffer_t* rb, int data)
 
 int RB_pop(ring_buffer_t* rb)
 {
-    if (rb == NULL || rb->buffer == NULL)
+    if (rb == NULL)
         return false;
 
     int8_t data = *rb->data_start;
